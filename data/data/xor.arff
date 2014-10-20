@@ -1,0 +1,10 @@
+@relation xor
+@attribute a real
+@attribute b real
+@attribute c {1, -1}
+
+@data
+-1,-1,1
+1,-1,-1
+-1,1,-1
+1,1,1

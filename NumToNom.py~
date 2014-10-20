@@ -1,0 +1,30 @@
+'''
+Created on 20 oct. 2014
+
+@author: gwlemoul
+'''
+from os.path import sys
+
+
+def main(args):
+	print >>sys.stderr, args
+    inpath = args[1]
+    outpath = args[2]
+    firstline = True
+    inputfile = open(inpath, 'r')
+    outputfile = open(outpath, 'w')
+    for line in inputfile:
+        if firstline:
+            firstline = False
+            outputfile.write(line + '\n')
+        else:
+            values = ','.split(line)
+            values[16] = "'" + values[16] + "'"
+            newline = ','.join(values)
+            outputfile.write(newline + '\n')
+    outputfile.close()
+    inputfile.close()
+    
+
+if __name__ == '__main__':
+    main(sys.argv)
