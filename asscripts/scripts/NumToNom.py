@@ -5,6 +5,8 @@ Created on 20 oct. 2014
 '''
 from os.path import sys
 
+from DigitWord import toWord
+
 
 def main(args):
     inpath = args[1]
@@ -19,9 +21,10 @@ def main(args):
         else:
             values = line.split(',')
             processed_values = map((lambda x : x.strip()), values)
-            processed_values[16] = "'" + processed_values[16] + "'"
-            newline = ','.join(processed_values)
-            outputfile.write(newline + '\n')
+            if len(processed_values) is 17:
+                processed_values[16] = toWord(processed_values[16])
+                newline = ','.join(processed_values)
+                outputfile.write(newline + '\n')
     outputfile.close()
     inputfile.close()
     

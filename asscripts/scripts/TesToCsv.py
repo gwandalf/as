@@ -6,6 +6,8 @@ Created on 26 oct. 2014
 import re
 import sys
 
+from DigitWord import toWord
+
 
 def main(args):
     inpath = args[1]
@@ -32,7 +34,7 @@ def process(infile, outfile):
                 point_array = []
             # new digit to be recorded
             line_tab = line.split()
-            cur_digit = line_tab[len(line_tab)-1]
+            cur_digit = toWord(line_tab[len(line_tab)-1])
             first_pass = False
         point_line = re.match("^\s*[0-9]+\s+[0-9]+\s*$", line)
         if point_line is not None:
@@ -62,7 +64,7 @@ def sample(points):
     max_x = 0
     max_y = 0
     base_index = len(points)/8
-    for index in range(0, 7):
+    for index in range(0, 8):
         point = points[base_index * index]
         point[0] = int(point[0])
         point[1] = int(point[1])
